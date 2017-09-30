@@ -11,7 +11,7 @@ int main()
 		printf("A should not be zero\n");
 		return 0;
 	}
-	d = sqrt(b) - 4 * a * c;
+	d = b*b - 4 * a * c;
 	printf("D = %f;\n", d);
 	if (d < 0)
 	{
