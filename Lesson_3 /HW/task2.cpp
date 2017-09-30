@@ -15,7 +15,7 @@ int main()
 		return 0;
 	}
 	
-	/* if ((L1x == 0) && (L1y == 0))
+	if ((L1x == 0) && (L1y == 0))
 	{
 		printf("Line 1 do not exist; \n");
 		return 0;
