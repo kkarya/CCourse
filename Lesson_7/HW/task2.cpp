@@ -14,9 +14,9 @@ int main()
 	int value = 0;
 	printf("Enter #massiv: ");
 	scanf_s("%d", &vector_size);
-	
+
 	ptr_v = (int *)malloc(vector_size * sizeof(int));
-	
+
 	while (i<vector_size)
 	{
 		scanf_s("%d", &value);
@@ -32,44 +32,68 @@ int main()
 		}
 	}
 	for (int i = 0; i < vector_size; i++)
-		{
-			printf("\n %d \n", *(ptr_v + i));
-		}
-	
+	{
+		printf("\n %d \n", *(ptr_v + i));
+	}
+
+	int selector = 0;
 	for (int i = 0; i < vector_size; i++)
 	{
+		selector = 0;
 
+		if (i == 0)
+		{
+			printf("| %d |", ptr_v[i]);
+			selector = selector + 1;
+		}
+		else
+		{
+			for (int j = i - 1; j >= 0; j--)
+			{
+				if (ptr_v[i] == ptr_v[j])
+				{
+					selector = selector + 1;
+				}
+			}
+		}
+
+		if (selector == 0)
+		{
+			printf("| %d |", ptr_v[i]);
+		}
 	}
+
+	printf("\n \n");
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**int max = *(ptr_v);
 	for (int i = 0; i < vector_size; i++)
 	{
-		sum = sum + *(ptr_v + i);
-		umn = umn * *(ptr_v + i);
-		if (max < ptr_v[i])
-		{
-			max = ptr_v[i];
-			adr = &ptr_v[i];
-		}
+	sum = sum + *(ptr_v + i);
+	umn = umn * *(ptr_v + i);
+	if (max < ptr_v[i])
+	{
+	max = ptr_v[i];
+	adr = &ptr_v[i];
+	}
 	}
 	printf("Sum= %d \n", sum);
 	printf("Umn= %d \n", umn);
