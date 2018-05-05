@@ -142,7 +142,8 @@ void printTree(Node *root, const char *dir, int level) {
 int getDepth(Node *root, int depth)
 {
 	int left, right;
-	if (root) {
+	if (root) 
+	{
 		left = getDepth(root->left, depth + 1);
 		right = getDepth(root->right, depth + 1);
 		if (left > right)
@@ -150,6 +151,18 @@ int getDepth(Node *root, int depth)
 		else return right;
 	}
 	return depth - 1;
+}
+
+
+
+void w_tree(struct Node* root, int *w, int level)
+{
+	if (root)
+	{
+		w[level - 1] += 1;
+		w_tree(root->left,w, level + 1);
+		w_tree(root->right,w, level + 1);
+	}
 }
 
 
@@ -168,12 +181,22 @@ int main() {
 	printf("max = %d\n", getMaxNode(root)->data);
 	printf("parent of 7 is %d\n", getNodeByValue(root, 7)->parent->data);
 
+
+
 	//deleteValue(root, 4);
 
 	printf("Sorted tree: \n");
 	printSortedTree(root, "root", 0);
 	getDepth(root, 0);
-	printf("Tree depth: %d", getDepth(root, 0));
+	printf("Tree depth: %d\n", getDepth(root, 0));
 
+	int *w;
+	w = (int *)malloc(20 * sizeof(int));
+	memset(w, 0, 20 * sizeof(int));
+	w_tree(root, w, 0);
+	for (int i = 0; i < 5; i++)
+	{
+		printf("W: %d, Level: %d\n", w[i], i + 1);
+	}
 	return 0;
 }
